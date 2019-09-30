@@ -46,4 +46,8 @@ public class FizzBuzzTest {
         assertEquals("FizzBuzz", toToken(15));
     }
 
+    @Test
+    public void should_format_add_linebreak_at_14_column() {
+        assertEquals("1, 2, Fizz, 4,\n Buzz", countTo(5));
+    }
 }
