@@ -30,3 +30,18 @@ Sample output:
 ...
 ```
 
+
+#### Challenge 3
+Print the first 100 numbers from Fibonacci list with FizzBuzz rule and line breaks.
+The Fibonacci list is:
+```
+    1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+```
+Sample output:
+```
+1, 1, 2, Fizz,
+ Buzz, 8, 13, 
+Fizz, 34, Buzz
+...
+```
+
