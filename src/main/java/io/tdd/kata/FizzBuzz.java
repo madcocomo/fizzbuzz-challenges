@@ -1,8 +1,12 @@
 package io.tdd.kata;
 
-import static java.lang.Math.min;
-
 public class FizzBuzz {
+
+    public static final int COL_WIDTH = 14;
+    public static final String FIZZ_BUZZ = "FizzBuzz";
+    public static final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
+
     public String countTo(int n) {
         StringBuilder result = new StringBuilder();
         for (int i = 1; i <= n; i++) {
@@ -11,17 +15,18 @@ public class FizzBuzz {
             }
             result.append(numberToToken(i));
         }
-        return wrapLine(result.toString(), 14);
+        return wrapLine(result.toString(), COL_WIDTH);
     }
 
     protected String wrapLine(String str, int width) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < str.length(); i+=width) {
-            if (i + width < str.length()) {
+            boolean isLastLine = i + width >= str.length();
+            if (isLastLine) {
+                builder.append(str, i, str.length());
+            } else {
                 builder.append(str, i, i+width);
                 builder.append("\n");
-            } else {
-                builder.append(str, i, str.length());
             }
         }
         return builder.toString();
@@ -30,11 +35,11 @@ public class FizzBuzz {
     protected String numberToToken(int i) {
         String number = String.valueOf(i);
         if (isDivedBy(i, 15)) {
-            number = "FizzBuzz";
+            number = FIZZ_BUZZ;
         } else if (isDivedBy(i, 3)) {
-            number = "Fizz";
+            number = FIZZ;
         } else if (isDivedBy(i, 5)) {
-            number = "Buzz";
+            number = BUZZ;
         }
         return number;
     }
