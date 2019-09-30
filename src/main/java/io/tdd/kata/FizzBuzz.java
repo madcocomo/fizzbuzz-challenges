@@ -6,10 +6,19 @@ public class FizzBuzz {
     public static final String FIZZ_BUZZ = "FizzBuzz";
     public static final String FIZZ = "Fizz";
     public static final String BUZZ = "Buzz";
+    private final IntegerIterableFactory iterableFactory;
+
+    public FizzBuzz(IntegerIterableFactory iterableFactory) {
+        this.iterableFactory = iterableFactory;
+    }
+
+    public FizzBuzz() {
+        this(new IntegerIterableFactory());
+    }
 
     public String countTo(int n) {
         StringBuilder result = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
+        for (int i : iterableFactory.getIterable(n)) {
             if (i > 1) {
                 result.append(", ");
             }
