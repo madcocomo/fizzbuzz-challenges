@@ -1,26 +1,22 @@
 package io.tdd.kata;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 
 public class IntegerIterableFactory implements IterableFactory {
 
-    protected Iterable<Integer> getIterable(int n) {
-        return new Iterable<Integer>() {
+    @Override
+    public Iterable<BigInteger> getIterable(int n) {
+        return () -> new Iterator<BigInteger>() {
             int i = 1;
+            @Override
+            public boolean hasNext() {
+                return i <= n;
+            }
 
             @Override
-            public Iterator<Integer> iterator() {
-                return new Iterator<Integer>() {
-                    @Override
-                    public boolean hasNext() {
-                        return i <= n;
-                    }
-
-                    @Override
-                    public Integer next() {
-                        return i++;
-                    }
-                };
+            public BigInteger next() {
+                return BigInteger.valueOf(i++);
             }
         };
     }

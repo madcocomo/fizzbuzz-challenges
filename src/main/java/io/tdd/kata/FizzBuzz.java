@@ -1,14 +1,16 @@
 package io.tdd.kata;
 
+import java.math.BigInteger;
+
 public class FizzBuzz {
 
     public static final int COL_WIDTH = 14;
     public static final String FIZZ_BUZZ = "FizzBuzz";
     public static final String FIZZ = "Fizz";
     public static final String BUZZ = "Buzz";
-    private final IntegerIterableFactory iterableFactory;
+    private final IterableFactory iterableFactory;
 
-    public FizzBuzz(IntegerIterableFactory iterableFactory) {
+    public FizzBuzz(IterableFactory iterableFactory) {
         this.iterableFactory = iterableFactory;
     }
 
@@ -18,10 +20,12 @@ public class FizzBuzz {
 
     public String countTo(int n) {
         StringBuilder result = new StringBuilder();
-        for (int i : iterableFactory.getIterable(n)) {
-            if (i > 1) {
+        boolean isFirst = true;
+        for (BigInteger i : iterableFactory.getIterable(n)) {
+            if (!isFirst) {
                 result.append(", ");
             }
+            isFirst = false;
             result.append(numberToToken(i));
         }
         return wrapLine(result.toString(), COL_WIDTH);
@@ -41,7 +45,7 @@ public class FizzBuzz {
         return builder.toString();
     }
 
-    protected String numberToToken(int i) {
+    protected String numberToToken(BigInteger i) {
         String number = String.valueOf(i);
         if (isDivedBy(i, 15)) {
             number = FIZZ_BUZZ;
@@ -53,7 +57,7 @@ public class FizzBuzz {
         return number;
     }
 
-    private boolean isDivedBy(int i, int i2) {
-        return i % i2 == 0;
+    private boolean isDivedBy(BigInteger i, int i2) {
+        return i.remainder(BigInteger.valueOf(i2)).equals(BigInteger.ZERO);
     }
 }
