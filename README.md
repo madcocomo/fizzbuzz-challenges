@@ -45,3 +45,12 @@ Fizz, 34, Buzz
 ...
 ```
 
+
+#### Challenge 4
+Accept command line argument `--fibonacci` to use Fibonacci list, otherwise use normal numbers.
+At the same time support another arguments to indicate number range.
+- `<command> 30` means print from 1 to 30
+- `<command> 20 25` means print from 20 to 25 (include)
+- `<command> --fibonacci 10 15` means print from 10th number in Fibonacci list to 15th (include)
+- no argument means print form 1 to 100
+
