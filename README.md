@@ -2,8 +2,23 @@
 
 - Implement in Pair Programming
 - Switch roles after each TDD cycle
+
+### Git Cheat Sheet
+Please don't commit code to the master branch. The exercise is supposed to be performed by groups in different branches.
 - Create branch with your group name
-- Push you code to unlock next challenge
+    ```
+    git branch <group_name>
+    git push --set-upstream origin $(git_current_branch)
+    ```
+- Once you finished the challenge in README, Push code to unlock the next challenge
+    ```
+    git push
+    ````
+- If everything goes well, you well see the README be updated
+    ```
+    git pull
+    ```
+
 
 ### Scenario: Implement a Fizz Buzz game
 #### Challenge 1
